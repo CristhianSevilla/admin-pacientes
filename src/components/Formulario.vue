@@ -34,6 +34,7 @@ const validar = () => {
       <span class="text-indigo-600 font-bold">Adminístralos</span>
     </h2>
 
+    <Alerta v-if="alerta.mensaje" :alerta="alerta" />
     <form
       class="bg-indigo-100 bg-opacity-60 shadow-xl rounded-lg py-10 px-5 mb-10"
       @submit.prevent="validar"
