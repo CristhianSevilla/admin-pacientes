@@ -30,8 +30,7 @@ const validar = () => {
     <h2
       class="text-xl md:text-2xl mt-5 text-center mb-10 font-semibold md:font-normal"
     >
-      Agrega Pacientes y
-      <span class="text-indigo-600 font-bold">Adminístralos</span>
+      <span class="text-indigo-700 font-bold">Agrega </span>Pacientes
     </h2>
 
     <Alerta v-if="alerta.mensaje" :alerta="alerta" />
