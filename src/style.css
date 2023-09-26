@@ -3,9 +3,14 @@
 @tailwind utilities;
 
 body {
-  background-image: url("/img/fondo.jpg");
+  background-image: url("/img/fondov.jpg");
   background-position: center center;
   background-size: cover; /* La imagen se ajustará al tamaño de la pantalla */
   background-attachment: fixed; /* La imagen de fondo permanecerá fija */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+@media (min-width: 768px) {
+  body {
+    background-image: url("/img/fondo.jpg");
+  }
 }
