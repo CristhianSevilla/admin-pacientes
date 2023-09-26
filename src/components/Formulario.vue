@@ -11,7 +11,9 @@ const paciente = reactive({
 </script>
 <template>
   <div class="md:w-1/2 xl:px-12">
-    <h2 class="text-2xl mt-5 text-center mb-10 font-semibold md:font-normal">
+    <h2
+      class="text-xl md:text-2xl mt-5 text-center mb-10 font-semibold md:font-normal"
+    >
       Agrega Pacientes y
       <span class="text-indigo-600 font-bold">Adminístralos</span>
     </h2>
