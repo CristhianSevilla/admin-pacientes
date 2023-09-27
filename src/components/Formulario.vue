@@ -7,14 +7,6 @@ const alerta = reactive({
   mensaje: "",
 });
 
-const paciente = reactive({
-  nombre: "",
-  email: "",
-  telefono: "",
-  alta: "",
-  tratamiento: "",
-});
-
 const validar = () => {
   if (Object.values(paciente).includes("")) {
     alerta.mensaje = "Todos los campos son obliogatorios";
@@ -47,7 +39,6 @@ const validar = () => {
           type="text"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
           placeholder="Nombre completo del paciente"
-          v-model="paciente.nombre"
         />
       </div>
       <div class="mb-5">
@@ -59,7 +50,6 @@ const validar = () => {
           type="email"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
           placeholder="Email del paciente"
-          v-model="paciente.email"
         />
       </div>
       <div class="mb-5">
@@ -71,7 +61,6 @@ const validar = () => {
           type="number"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
           placeholder="Teléfono del paciente"
-          v-model="paciente.telefono"
         />
       </div>
       <div class="mb-5">
@@ -82,7 +71,6 @@ const validar = () => {
           id="alta"
           type="date"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          v-model="paciente.alta"
         />
       </div>
       <div class="mb-5">
@@ -93,7 +81,6 @@ const validar = () => {
           id="tratamiento"
           placeholder="Descríbe el tratamiento del paciente"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
-          v-model="paciente.tratamiento"
         />
       </div>
 
