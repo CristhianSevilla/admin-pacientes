@@ -7,8 +7,39 @@ const alerta = reactive({
   mensaje: "",
 });
 
+defineEmits([
+  "update:nombre",
+  "update:email",
+  "update:telefono",
+  "update:alta",
+  "update:tratamiento",
+]);
+
+const props = defineProps({
+  nombre: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  telefono: {
+    type: String,
+    required: true,
+  },
+  alta: {
+    type: String,
+    required: true,
+  },
+  tratamiento: {
+    type: String,
+    required: true,
+  },
+});
+
 const validar = () => {
-  if (Object.values(paciente).includes("")) {
+  if (Object.values(props).includes("")) {
     alerta.mensaje = "Todos los campos son obliogatorios";
     alerta.tipo = "error";
     return;
@@ -39,6 +70,8 @@ const validar = () => {
           type="text"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
           placeholder="Nombre completo del paciente"
+          :value="nombre"
+          @input="$emit('update:nombre', $event.target.value)"
         />
       </div>
       <div class="mb-5">
@@ -50,6 +83,8 @@ const validar = () => {
           type="email"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
           placeholder="Email del paciente"
+          :value="email"
+          @input="$emit('update:email', $event.target.value)"
         />
       </div>
       <div class="mb-5">
@@ -61,6 +96,8 @@ const validar = () => {
           type="number"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
           placeholder="Teléfono del paciente"
+          :value="telefono"
+          @input="$emit('update:telefono', $event.target.value)"
         />
       </div>
       <div class="mb-5">
@@ -71,6 +108,8 @@ const validar = () => {
           id="alta"
           type="date"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          :value="alta"
+          @input="$emit('update:alta', $event.target.value)"
         />
       </div>
       <div class="mb-5">
@@ -81,6 +120,8 @@ const validar = () => {
           id="tratamiento"
           placeholder="Descríbe el tratamiento del paciente"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
+          :value="tratamiento"
+          @input="$emit('update:tratamiento', $event.target.value)"
         />
       </div>
 
