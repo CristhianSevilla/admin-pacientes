@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive } from "vue";
+import { uid } from "uid";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Formulario from "./components/Formulario.vue";
@@ -8,6 +9,7 @@ import Paciente from "./components/Paciente.vue";
 const pacientes = ref([]);
 
 const paciente = reactive({
+  id: null,
   nombre: "",
   email: "",
   telefono: "",
@@ -16,16 +18,9 @@ const paciente = reactive({
 });
 
 const guardarPaciente = () => {
-  pacientes.value.push({ ...paciente });
+  pacientes.value.push({ ...paciente, id: uid() });
 
   //Reiniciar el objeto de paciente
-  // paciente.nombre = "";
-  // paciente.email = "";
-  // paciente.telefono = "";
-  // paciente.alta = "";
-  // paciente.tratamiento = "";
-
-  //Otra forma de reiniciar el Objeto
   Object.assign(paciente, {
     nombre: "",
     email: "",
@@ -50,13 +45,17 @@ const guardarPaciente = () => {
       />
       <div class="md:w-1/2 md:h-screen md:overflow-y-scroll">
         <h3
-          class="text-xl md:text-2xl mt-5 text-center mb-10 font-semibold md:font-normal"
+          class="text-xl md:text-2xl mt-5 text-center font-semibold md:font-normal"
         >
           <span class="text-indigo-700 font-bold">Administra </span>
           Pacientes
         </h3>
         <div v-if="pacientes.length">
-          <Paciente v-for="paciente in pacientes" :paciente="paciente" />
+          <Paciente
+            v-for="paciente in pacientes"
+            key="paciente.id"
+            :paciente="paciente"
+          />
         </div>
         <p v-else class="mt-12 text-2xl text-center">No hay pacientes</p>
       </div>

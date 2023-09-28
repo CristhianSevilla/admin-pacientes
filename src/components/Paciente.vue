@@ -13,7 +13,7 @@ defineProps({
   >
     <p class="font-bold mb-3 text-gray-700 uppercase">
       ID:
-      <span class="font-normal normal-case"> </span>
+      <span class="font-normal normal-case">{{ paciente.id }}</span>
     </p>
 
     <p class="font-bold mb-3 text-gray-700 uppercase">
