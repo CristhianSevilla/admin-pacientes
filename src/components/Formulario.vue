@@ -43,10 +43,26 @@ const validar = () => {
   if (Object.values(props).includes("")) {
     alerta.mensaje = "Todos los campos son obliogatorios";
     alerta.tipo = "error";
+    setTimeout(() => {
+      Object.assign(alerta, {
+        tipo: "",
+        mensaje: "",
+      });
+    }, 3000);
     return;
   }
 
   emit("guardar-paciente");
+
+  alerta.mensaje = "Paciente Agregado Correctamente";
+  alerta.tipo = "exito";
+
+  setTimeout(() => {
+    Object.assign(alerta, {
+      tipo: "",
+      mensaje: "",
+    });
+  }, 3000);
 };
 </script>
 <template>
@@ -57,7 +73,6 @@ const validar = () => {
       <span class="text-indigo-700 font-bold">Agrega </span>Pacientes
     </h2>
 
-    <Alerta v-if="alerta.mensaje" :alerta="alerta" />
     <form
       class="bg-indigo-100 bg-opacity-60 shadow-xl rounded-lg py-10 px-5 mb-10"
       @submit.prevent="validar"
@@ -125,6 +140,8 @@ const validar = () => {
           @input="$emit('update:tratamiento', $event.target.value)"
         />
       </div>
+
+      <Alerta v-if="alerta.mensaje" :alerta="alerta" />
 
       <input
         type="submit"

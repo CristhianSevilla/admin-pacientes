@@ -15,7 +15,7 @@ const isError = computed(() => {
 
 <template>
   <div
-    :class="[isError ? 'bg-red-500' : 'bg-green-500']"
+    :class="[isError ? 'bg-red-500' : 'bg-green-600']"
     class="text-white uppercase p-3 rounded-md text-center font-bold mb-2"
   >
     {{ alerta.mensaje }}
