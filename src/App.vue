@@ -3,7 +3,7 @@ import { ref, reactive } from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Formulario from "./components/Formulario.vue";
-import Paciente from "./components/Paciente.Vue";
+import Paciente from "./components/Paciente.vue";
 
 const pacientes = ref([]);
 
