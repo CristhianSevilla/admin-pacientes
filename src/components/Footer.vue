@@ -5,7 +5,7 @@ const fechaActual = new Date();
 const añoActual = fechaActual.getFullYear();
 </script>
 <template>
-  <div class="bg-indigo-100 bg-opacity-60 mt-14 p-5">
+  <div class="bg-indigo-100 bg-opacity-20 mt-14 p-5">
     <p class="text-center text-xl">
       Desarrollado por
       <span class="text-indigo-700 font-bold"
