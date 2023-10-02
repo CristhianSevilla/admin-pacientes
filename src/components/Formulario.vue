@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 import Alerta from "./Alerta.vue";
 
 const alerta = reactive({
@@ -17,6 +17,10 @@ const emit = defineEmits([
 ]);
 
 const props = defineProps({
+  id: {
+    type: [String, null],
+    required: true,
+  },
   nombre: {
     type: String,
     required: true,
@@ -54,8 +58,13 @@ const validar = () => {
 
   emit("guardar-paciente");
 
-  alerta.mensaje = "Paciente Agregado Correctamente";
-  alerta.tipo = "exito";
+  if (props.id) {
+    alerta.mensaje = "Paciente Editado Correctamente";
+    alerta.tipo = "exito";
+  } else {
+    alerta.mensaje = "Paciente Agregado Correctamente";
+    alerta.tipo = "exito";
+  }
 
   setTimeout(() => {
     Object.assign(alerta, {
@@ -64,6 +73,10 @@ const validar = () => {
     });
   }, 3000);
 };
+
+const editando = computed(() => {
+  return props.id;
+});
 </script>
 <template>
   <div class="md:w-1/2 xl:px-12">
@@ -146,7 +159,7 @@ const validar = () => {
       <input
         type="submit"
         class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-800 hover:cursor-pointer"
-        value="Registrar Paciente"
+        :value="[editando ? 'Guardar Cambios' : 'Registrar Paciente']"
       />
     </form>
   </div>

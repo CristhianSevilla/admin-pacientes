@@ -52,6 +52,16 @@ const actualizarPaciente = (id) => {
   //LLenar el objeto de paciente con los datos del paciente a editar para que se muestren en el formulario
   Object.assign(paciente, pacienteEditar);
 };
+
+const eliminarPaciente = (id) => {
+  // Filtrar los pacientes restantes
+  const pacientesRestantes = pacientes.value.filter(
+    (paciente) => paciente.id !== id
+  );
+
+  // Asignar los pacientes restantes al arreglo de pacientes
+  pacientes.value = pacientesRestantes;
+};
 </script>
 
 <template>
@@ -65,6 +75,7 @@ const actualizarPaciente = (id) => {
         v-model:alta="paciente.alta"
         v-model:tratamiento="paciente.tratamiento"
         @guardar-paciente="guardarPaciente"
+        :id="paciente.id"
       />
       <div class="md:w-1/2 md:h-screen md:overflow-y-scroll">
         <h3
@@ -79,6 +90,7 @@ const actualizarPaciente = (id) => {
             key="paciente.id"
             :paciente="paciente"
             @actualizar-paciente="actualizarPaciente"
+            @eliminar-paciente="eliminarPaciente"
           />
         </div>
         <p v-else class="mt-12 text-2xl text-center">No hay pacientes</p>
