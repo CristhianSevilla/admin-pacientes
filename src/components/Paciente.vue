@@ -11,7 +11,7 @@ defineEmits(["actualizar-paciente", "eliminar-paciente"]);
 
 <template>
   <div
-    class="py-10 px-5 mb-10 my-10 bg-indigo-100 bg-opacity-60 shadow-xl rounded-lg md:px-10"
+    class="py-7 px-5 md:px-7 mb-7 last-of-type:mb-0 bg-indigo-100 bg-opacity-70 rounded-lg"
   >
     <p class="font-bold mb-3 text-gray-700 uppercase">
       ID:
@@ -46,7 +46,7 @@ defineEmits(["actualizar-paciente", "eliminar-paciente"]);
     <div class="grid md:grid-cols-2 gap-5 mt-10">
       <button
         type="button"
-        class="block w-full py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase"
+        class="block w-full py-2 px-7 bg-indigo-600 hover:bg-indigo-800 text-white font-bold uppercase"
         @click="$emit('actualizar-paciente', paciente.id)"
       >
         Editar
@@ -54,7 +54,7 @@ defineEmits(["actualizar-paciente", "eliminar-paciente"]);
 
       <button
         type="button"
-        class="block w-full py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase"
+        class="block w-full py-2 px-7 bg-red-600 hover:bg-red-700 text-white font-bold uppercase"
         @click="$emit('eliminar-paciente', paciente.id)"
       >
         Eliminar

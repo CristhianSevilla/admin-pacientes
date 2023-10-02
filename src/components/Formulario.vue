@@ -79,7 +79,7 @@ const editando = computed(() => {
 });
 </script>
 <template>
-  <div class="md:w-1/2 xl:px-12">
+  <div class="md:w-1/2">
     <h2
       class="text-xl md:text-2xl mt-5 text-center mb-10 font-semibold md:font-normal"
     >
@@ -87,7 +87,7 @@ const editando = computed(() => {
     </h2>
 
     <form
-      class="bg-indigo-100 bg-opacity-60 shadow-xl rounded-lg py-10 px-5 mb-10"
+      class="bg-indigo-100 bg-opacity-70 shadow-xl rounded-lg py-10 px-5 mb-10"
       @submit.prevent="validar"
     >
       <div class="mb-5">

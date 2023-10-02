@@ -91,8 +91,8 @@ const eliminarPaciente = (id) => {
 
 <template>
   <Header />
-  <div class="container mx-auto px-5 xl:px-10">
-    <div class="mt-6 md:mt-10 md:flex gap-4">
+  <div class="container mx-auto max-w-7xl px-5">
+    <div class="mt-6 md:mt-10 md:flex gap-7">
       <formulario
         v-model:nombre="paciente.nombre"
         v-model:email="paciente.email"
@@ -102,14 +102,17 @@ const eliminarPaciente = (id) => {
         @guardar-paciente="guardarPaciente"
         :id="paciente.id"
       />
-      <div class="md:w-1/2 md:h-screen md:overflow-y-scroll">
+      <div class="md:w-1/2">
         <h3
-          class="text-xl md:text-2xl mt-5 text-center font-semibold md:font-normal"
+          class="text-xl md:text-2xl mt-5 text-center font-semibold md:font-normal mb-10"
         >
           <span class="text-indigo-700 font-bold">Administra </span>
           Pacientes
         </h3>
-        <div v-if="pacientes.length">
+        <div
+          class="md:h-screen md:overflow-y-scroll overflow-hidden"
+          v-if="pacientes.length"
+        >
           <Paciente
             v-for="paciente in pacientes"
             key="paciente.id"

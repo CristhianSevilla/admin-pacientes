@@ -14,3 +14,11 @@ body {
     background-image: url("/img/fondo.jpg");
   }
 }
+
+.overflow-hidden::-webkit-scrollbar {
+  display: none; /* Oculta la barra de desplazamiento en navegadores WebKit (como Chrome y Safari) */
+}
+
+.overflow-hidden {
+  scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+}
