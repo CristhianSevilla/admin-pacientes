@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
 import { uid } from "uid";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
@@ -16,6 +16,22 @@ const paciente = reactive({
   alta: "",
   tratamiento: "",
 });
+
+//Llamar la funcion para guardarLocalStorage cada que ocurra un cambio en elarreglo de pacientes
+watch(
+  pacientes,
+  () => {
+    guardarLocalStorage();
+  },
+  {
+    deep: true,
+  }
+);
+
+//Poner en localStorage el arreglo de pacientes, convertido en un objeto JSON
+const guardarLocalStorage = () => {
+  localStorage.setItem("pacientes", JSON.stringify(pacientes.value));
+};
 
 const guardarPaciente = () => {
   //Detectar si es un registro nuevo o si es un paciente que se va a editar, dependiendo si hay un id
