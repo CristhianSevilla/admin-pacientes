@@ -33,6 +33,15 @@ const guardarLocalStorage = () => {
   localStorage.setItem("pacientes", JSON.stringify(pacientes.value));
 };
 
+//Colocar los pacientes del Storage en el State
+onMounted(() => {
+  const pacientesStorage = localStorage.getItem("pacientes");
+
+  if (pacientesStorage) {
+    pacientes.value = JSON.parse(pacientesStorage);
+  }
+});
+
 const guardarPaciente = () => {
   //Detectar si es un registro nuevo o si es un paciente que se va a editar, dependiendo si hay un id
   if (paciente.id) {
