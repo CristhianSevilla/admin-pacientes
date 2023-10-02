@@ -18,7 +18,20 @@ const paciente = reactive({
 });
 
 const guardarPaciente = () => {
-  pacientes.value.push({ ...paciente, id: uid() });
+  //Detectar si es un registro nuevo o si es un paciente que se va a editar, dependiendo si hay un id
+  if (paciente.id) {
+    //Aplicamos destructuring al id del paciente a editar
+    const { id } = paciente;
+    //Buscamos la posicion en el arreglo de los pacientes, del paciente al que vamos a editar, ocupando el id para buscarlo
+    const i = pacientes.value.findIndex(
+      (pacienteState) => pacienteState.id === id
+    );
+    //Reescribimos al paciente editado en el arreglo de pacientes
+    pacientes.value[i] = { ...paciente };
+  } else {
+    //Hacemos un nuevo registro
+    pacientes.value.push({ ...paciente, id: uid() });
+  }
 
   //Reiniciar el objeto de paciente
   Object.assign(paciente, {
@@ -27,6 +40,7 @@ const guardarPaciente = () => {
     telefono: "",
     alta: "",
     tratamiento: "",
+    id: null,
   });
 };
 
