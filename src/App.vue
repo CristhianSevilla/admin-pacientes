@@ -31,7 +31,12 @@ const guardarPaciente = () => {
 };
 
 const actualizarPaciente = (id) => {
-  console.log("Actualizando... ", id);
+  //Filtrar el paciente que queremos editar
+  const pacienteEditar = pacientes.value.filter(
+    (paciente) => paciente.id === id
+  )[0];
+  //LLenar el objeto de paciente con los datos del paciente a editar para que se muestren en el formulario
+  Object.assign(paciente, pacienteEditar);
 };
 </script>
 
